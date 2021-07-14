@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Herança</title>
+    <style>
+        body { /* font foi herdado por h1 e div mas border não*/
+            font-family: monospace;
+            font-size: 40px;
+            border: solid 3px red;
+            padding: 50px;
+        }
+
+        div {
+            border: inherit; /* palavra para herdar*/
+            padding: inherit;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 style="background-color: lightpink;">Herança</h1>
+    <div>Estou herdando</div>
+</body>
+
+</html>
