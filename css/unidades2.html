@@ -4,7 +4,23 @@
     <meta charset="UTF-8">
     <title>Unidades #02</title>
     <style>
-        /* ... */
+        .fora {
+            position: relative;
+            background-color: orange;
+            height: 400px;
+            width: 400px;
+            padding: 50px;
+        }
+
+        .dentro {
+            background-color: mediumvioletred;
+            height: 100px;
+            width: 100%; /*as positions vão influenciar o comportamento da width devido ao % */
+            position: static; /* ocupa apenas espaço do conteúdo */
+            position: relative;
+            position: fixed; /* ele usa o tamanho do viewport não da div */
+            position: absolute; /* absolute é o conteúdo mais o padding */
+        }
     </style>
 </head>
 <body>

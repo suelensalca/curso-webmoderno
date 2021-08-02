@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Trabalhando com Eventos #01</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class="conteudo exercicio">
+    <div>
+        <!-- onclick="navegarEm5s(event)" o positivo dessa forma é que é fácil de ler mas é hardcoded -->
+        <a espera-um-pouco href="https://google.com.br">Google</a>
+    </div>
+    <script>
+        function navegarEm5s(e) {
+            e.preventDefault()
+            console.log('Saindo em 5s...')
+            setTimeout(() => {
+                const link = e.target //target é o elemento que disparou a ação, no caso o link
+                window.location.href = link.href
+            }, 5000)
+        }
+
+        // const a = document.querySelector('a')
+        // a.onclick = navegarEm5s - essa estratégia deixa muito implicito e dificil de saber q o link esta sendo manipulado
+
+        const a = document.querySelector('[espera-um-pouco]') //pressupõe-se que um atributo personalizado vai ser usado a partir do js
+        a.onclick = navegarEm5s
+    </script>
+</body>

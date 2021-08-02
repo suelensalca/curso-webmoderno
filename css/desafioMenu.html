@@ -7,15 +7,105 @@
     <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <style>
-        /* ... */
-    </style>
+        body {
+            background-color: lightgray;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.1em;
+        }
+
+        .cabecalho {
+            background-color: rgb(46, 45, 45);
+            position: relative;
+            float: left;
+            width: 100%;
+            border-bottom-style: solid;
+            border-color: lightskyblue;
+            border-width: 4px;
+        }
+        
+        .logo {
+            position: relative;
+            float: left;
+            width: fit-content;
+            margin: 10px;
+        }
+        
+        .menu-toggle {
+            border-style: solid;
+            border-color: rgb(131, 131, 131);
+            background-color: rgb(107, 107, 107);
+            color: white;
+            border-radius: 5px;
+            margin: 16px 10px;
+            padding: 10px 20px;
+            display: none;
+        }
+        
+        .menu {
+            position: relative;
+            float: left;
+            width: fit-content;
+        }
+        
+        ul {
+            list-style-type: none;
+            overflow: hidden;
+            padding-left: 20px;
+        }
+        
+        li {
+            position: relative;
+            float: left;
+            display: inline;
+            margin: 10px;
+        }
+
+        li a {
+            text-decoration: none;
+            color: white;
+            padding: 20px 10px;
+        }
+
+        li a:hover {
+            background-color: lightskyblue;
+            color: black;
+        }
+
+        .autenticacao {
+            position: relative;
+            float: right;
+            display: inline;
+            padding: 26px 0px;
+        }
+        
+        .autenticacao a {
+            text-decoration: none;
+            color: white;
+            padding: 10px;
+        }
+
+        .destaque {
+            background-color: tomato;
+            border-radius: 20px;
+            margin: 10px;
+        }
+        
+        @media (max-width: 690px) {
+            .menu {display: none;}
+            .menu-toggle { display: block; float: right; position: relative;  }
+        }
+
+        @media (max-width: 870px) {
+            .autenticacao {display: none;}
+        }
+        </style>
 </head>
 
 <body>
     <header class="cabecalho">
         <div class="logo">
             <a href="#inicio">
-                <img src="http://files.cod3r.com.br/curso-web/logo.png" alt="Logo" />
+                <img src="http://files.cod3r.com.br/curso-web/logo.png" alt="Logo" style="width:264px;height:50px;"/>
             </a>
         </div>
         <button class="menu-toggle">
@@ -44,7 +134,34 @@
     </header>
 
     <script>
-        // ...
+        
+        function locationHashChange() {
+            updateMenu()
+        }
+
+        function updateMenu() {
+
+            if(location.hash != "#inicio" &&
+            location.hash != "#cursos" &&
+            location.hash != "#sobre" &&
+            location.hash != "#contato") {
+                return
+            }
+
+            let itensMenu = document.querySelectorAll("ul li a")
+            
+            itensMenu.forEach((item) => {
+                item.style.backgroundColor = "#2e2d2d"
+                item.style.color = "#fff"
+            })
+            
+            let selectMenu = document.querySelector(`li a[href='${location.hash}']`)
+
+            selectMenu.style.backgroundColor = "#87cefa"
+            selectMenu.style.color = "#000"
+        }
+
+        window.addEventListener('hashchange', locationHashChange)
     </script>
 </body>
 
